@@ -107,19 +107,21 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.14.11</version> <!-- Latest version -->
+            <version>1.14.12</version> <!-- Updated version -->
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy-agent</artifactId>
-            <version>1.14.11</version>
+            <version>1.14.12</version> <!-- Updated version -->
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.9.0</version> <!-- Latest version -->
+            <version>5.10.0</version> <!-- Updated version -->
             <scope>test</scope>
         </dependency>
+        <!-- mockito-inline is no longer a separate artifact in Mockito 5.x -->
+        <!-- The mockito-core now includes the inline mocking capability -->
     </dependencies>
 
     <build>
@@ -134,7 +136,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.12.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -145,6 +147,14 @@
                             <version>1.18.30</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <argLine>-Dnet.bytebuddy.experimental=true</argLine>
                 </configuration>
             </plugin>
             <plugin>
