@@ -55,7 +55,7 @@ This project consists of:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/sprasath/fin-tracker.git
+git clone https://github.com/satiyap/fin-tracker.git
 cd fin-tracker
 ```
 2. Build the application:
@@ -72,7 +72,7 @@ The API will be available at http://localhost:8080. API documentation will be av
 
 1. Clone and navigate to the frontend directory:
 ```bash
-git clone https://github.com/sprasath/fin-tracker-ui.git
+git clone https://github.com/satiyap/fin-tracker-ui.git
 cd fin-tracker-ui
 ```
 2. Install dependencies:
