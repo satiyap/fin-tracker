@@ -43,10 +43,12 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
     private final JwtUtils jwtUtils;
+    private final RequestLoggingFilter requestLoggingFilter;
     
-    public SecurityConfig(UserDetailsService userDetailsService, JwtUtils jwtUtils) {
+    public SecurityConfig(UserDetailsService userDetailsService, JwtUtils jwtUtils, RequestLoggingFilter requestLoggingFilter) {
         this.userDetailsService = userDetailsService;
         this.jwtUtils = jwtUtils;
+        this.requestLoggingFilter = requestLoggingFilter;
     }
 
     @Bean
@@ -104,12 +106,16 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**").permitAll()
                 .requestMatchers("/api-docs/**").permitAll()
                 .requestMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/actuator/**").permitAll()
                 // Note: /h2-console/** is ignored by WebSecurityCustomizer
                 .anyRequest().authenticated()
             )
             
             // Use stateless session management
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            
+            // Add the request logging filter before authentication filter
+            .addFilterBefore(requestLoggingFilter, UsernamePasswordAuthenticationFilter.class)
             
             // Add the JWT authentication filter before UsernamePasswordAuthenticationFilter
             .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

@@ -18,3 +18,4 @@ logging:
     com.fintracker: DEBUG
     org.springframework: INFO
     org.hibernate: INFO
+  config: classpath:logback/logback-spring.xml

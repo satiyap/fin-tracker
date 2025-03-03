@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: fin-tracker-v6
+    name: fin-tracker
 
 server:
   port: 8080
@@ -11,7 +11,7 @@ server:
 
 app:
   jwt:
-    secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+    secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437 # Placeholder secret key for JWT
     expiration-ms: 86400000 # 24 hours
 
 springdoc:
@@ -20,3 +20,19 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     operationsSorter: method
+
+# Actuator configuration for monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers,prometheus
+  endpoint:
+    health:
+      show-details: when_authorized
+    loggers:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
