@@ -3,16 +3,13 @@ spring:
     active: dev
   application:
     name: fin-tracker
+  config:
+    import: classpath:secrets.yml
 
 server:
   port: 8080
   servlet:
     context-path: /
-
-app:
-  jwt:
-    secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437 # Placeholder secret key for JWT
-    expiration-ms: 86400000 # 24 hours
 
 springdoc:
   api-docs:
@@ -36,3 +33,12 @@ management:
     export:
       prometheus:
         enabled: true
+
+# Security configuration is externalized to secrets.yml
+# Add a secrets.yml file in the same directory as application.yml
+# It needs to contain the following:
+# app:
+#   jwt:
+#     # This is a secure JWT secret key generated for server-side use only
+#     secret: <32 characters long random string>
+#     expiration-ms: 86400000 # 24 hours

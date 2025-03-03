@@ -70,10 +70,9 @@ ehthumbs.db
 Thumbs.db
 
 # Application properties with sensitive data
-src/main/resources/application-dev.yml
-src/main/resources/application-local.yml
 src/main/resources/secrets.yml
 *.env
+/data/
 
 # Generated content
 node_modules/
