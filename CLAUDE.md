@@ -8,9 +8,9 @@
 - Run specific test class: `mvn test -Dtest=TestClassName`
 
 ## Java Version Compatibility
-- Using Java 23
-- For testing with Java 23, add `-Dnet.bytebuddy.experimental=true` to JVM arguments
-- Required dependency versions for Java 23:
+- Using Java 21
+- For testing with Java 21, add `-Dnet.bytebuddy.experimental=true` to JVM arguments
+- Required dependency versions for Java 21:
   - Byte Buddy 1.14.12+
   - Mockito 5.10.0+
 
