@@ -44,7 +44,7 @@ This project consists of:
 ## Prerequisites
 
 - Java 11 or higher
-- Gradle 7.0 or higher
+- Maven 3.8 or higher
 - Node.js 14.x or higher
 - npm 6.x or higher
 - PostgreSQL (for production)
