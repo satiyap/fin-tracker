@@ -21,7 +21,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> findByCreatedById(Long userId);
     List<Transaction> findByTransactionDateBetween(LocalDateTime start, LocalDateTime end);
     
-    @Query("SELECT t FROM Transaction t WHERE t.account.user.id = :userId AND t.transactionDate BETWEEN :start AND :end")
+    @Query("SELECT t FROM Transaction t WHERE t.createdBy.id = :userId AND t.transactionDate BETWEEN :start AND :end")
     List<Transaction> findByUserIdAndDateRange(Long userId, LocalDateTime start, LocalDateTime end);
     
     @Query("SELECT t FROM Transaction t WHERE t.account.id = :accountId AND t.transactionDate BETWEEN :start AND :end")
